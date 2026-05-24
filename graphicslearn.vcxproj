@@ -139,6 +139,7 @@
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".gitignore" />
     <None Include="fragmentshader.glsl" />
     <None Include="lightfrag.glsl" />
     <None Include="vertexshader.glsl" />

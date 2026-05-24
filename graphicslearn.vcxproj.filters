@@ -40,6 +40,7 @@
     <None Include="fragmentshader.glsl" />
     <None Include="vertexshader.glsl" />
     <None Include="lightfrag.glsl" />
+    <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\container.jpg">
