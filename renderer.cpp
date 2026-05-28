@@ -64,4 +64,83 @@ Mesh::Mesh(std::vector<Vertex>vertices, std::vector<unsigned int> indices, std::
  }
 
 
+ 
+
+ void Model::Draw(Shader& shader) {
+	 for (unsigned int i{ 0 }; i < meshes.size(); i++) {
+		 meshes[i].Draw(shader);
+	 }
+ }
+
+
+
+
+ void Model::loadmodel(std::string path) {
+	 Assimp::Importer import;
+	 const aiScene* scene{import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs)};
+
+	 if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) {
+		 std::cout << "assimp error" << import.GetErrorString() << std::endl;
+		 return;
+
+	 }
+	 directory = path.substr(0, path.find_last_of('/'));
+	 processNode(scene->mRootNode, scene);
+}
+
+ void Model::processNode(aiNode* node, const aiScene* scene) {
+	 for (unsigned int i{ 0 }; i < node->mNumMeshes; i++) {
+		 aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
+		 meshes.push_back(processmesh(mesh, scene));
+	}
+	 for (unsigned int i{ 0 }; i < node->mNumChildren; i++) {
+		 processNode(node->mChildren[i], scene);
+	 }
+ }
+
+ Mesh Model::processmesh(aiMesh* mesh, const aiScene* scene) {
+	 std::vector <Vertex> vertices;
+	 std::vector <unsigned int> indices;
+	 std::vector <Texture> textures;
+
+	 for (unsigned int i{ 0 }; i < mesh->mNumVertices; i++) {
+		 Vertex vr;
+		 vertices.push_back(vr);
+
+	 }
+	 if (mesh->mMaterialIndex >= 0) {
+
+	 }
+	 return Mesh(vertices, indices, textures);
+ 
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
