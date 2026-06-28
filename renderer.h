@@ -5,19 +5,21 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <string>
 #include "shader.h"
+#include "stb_image.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 struct Vertex {
-    glm::vec3 position;
+    glm::vec3 Position;
     glm::vec3 Normal;
-    glm::vec3 Texturecoods;
+    glm::vec2 Texturecoods;
 
 };
 
 struct Texture {
     unsigned int id;
     std::string type;
+    std::string path;
 };
 
 class Mesh {
@@ -35,10 +37,7 @@ private:
 
 class Model {
 public: 
-    Model(char * path) {
-        loadmodel(path);
-
-    }
+    Model(const char* path);
     void Draw(Shader& shader);
 
 private:

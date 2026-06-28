@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "stb_image.h"
+#include "renderer.h"
 #include <vector>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -28,8 +28,11 @@ double g_yaw{ -90.0f };
 double g_pitch{0.0f};
 float fov = 45.0f;
 bool firstmouse{ true };
+float frustumnear{0.1f};
+float frustumend{ 100.0f };
 
-
+float screenwidth{ 1280.0f };
+float screenheight{ 720.0f };
 
 int main() {
     glfwInit();
@@ -37,7 +40,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Mustbe the best", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(screenwidth, screenheight, "Mustbe the best", NULL, NULL);
     if (window == NULL) {
         std::cout << "failed to create glfwwindow" << "\n";
         glfwTerminate();
@@ -63,9 +66,23 @@ int main() {
  
     glEnable(GL_DEPTH_TEST);
 
+    Shader ourshader("vertexshader.glsl", "fragmentshader.glsl");
+    Model pistolmodel("shotgun.glb");
+    stbi_set_flip_vertically_on_load(true);
+
 
     while (!glfwWindowShouldClose(window)) {
-      
+
+        ourshader.use();
+        glm::mat4 projection{1.0f};
+        projection = glm::perspective(glm::radians(fov),(float)screenwidth/screenheight,frustumnear,frustumend);
+        glm::mat4 view(1.0f);
+        view = glm::lookAt(cameraposition, cameraposition + camerafront, cameraup);
+        glm::mat4 model{ 1.0f };
+        model = glm::translate(model, glm::vec3(0.0f,0.0f,0.0f));
+        
+
+    
 
 
         glfwSwapBuffers(window);

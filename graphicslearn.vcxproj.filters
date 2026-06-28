@@ -47,6 +47,12 @@
     <None Include="vertexshader.glsl" />
     <None Include="lightfrag.glsl" />
     <None Include=".gitignore" />
+    <None Include="backpack.mtl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\Downloads\Shotgun.glb">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\container.jpg">
@@ -61,5 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="lightvert.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="backpack.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
   </ItemGroup>
 </Project>
