@@ -152,12 +152,14 @@ Mesh::Mesh(std::vector<Vertex>vertices, std::vector<unsigned int> indices, std::
 		 vector.y = mesh->mVertices[i].y;
 		 vector.z = mesh->mVertices[i].z;
 		 vr.Position = vector;
-		 vertices.push_back(vr);
+		 
 
 		 vector.x = mesh->mNormals[i].x;
 		 vector.y = mesh->mNormals[i].y;
 		 vector.z = mesh->mNormals[i].z;
 		 vr.Normal = vector;
+
+		 
 
 		 if (mesh->mTextureCoords[0]) {
 			 glm::vec2 vec;
@@ -169,7 +171,7 @@ Mesh::Mesh(std::vector<Vertex>vertices, std::vector<unsigned int> indices, std::
 		 {
 			 vr.Texturecoods = glm::vec2(0.0f, 0.0f);
 		 }
-
+		 vertices.push_back(vr);
 
 	 }
 	 for (unsigned int i{ 0 }; i < mesh->mNumFaces; i++) { //kumbuka to reduce the computations in this process.

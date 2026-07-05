@@ -148,6 +148,8 @@
     <None Include="backpack.mtl" />
     <None Include="fragmentshader.glsl" />
     <None Include="lightfrag.glsl" />
+    <None Include="modelloadingfrag.glsl" />
+    <None Include="modelvertex.glsl" />
     <None Include="vertexshader.glsl" />
   </ItemGroup>
   <ItemGroup>

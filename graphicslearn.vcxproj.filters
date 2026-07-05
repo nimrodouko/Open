@@ -53,6 +53,8 @@
     <None Include="..\..\..\..\Downloads\Shotgun.glb">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="modelloadingfrag.glsl" />
+    <None Include="modelvertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\container.jpg">

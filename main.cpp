@@ -66,13 +66,14 @@ int main() {
  
     glEnable(GL_DEPTH_TEST);
 
-    Shader ourshader("vertexshader.glsl", "fragmentshader.glsl");
-    Model pistolmodel("shotgun.glb");
-    stbi_set_flip_vertically_on_load(true);
+    Shader ourshader("modelvertex.glsl", "modelloadingfrag.glsl");
+    Model pistolmodel("backpack.obj");
+   
 
 
     while (!glfwWindowShouldClose(window)) {
-
+        glClear(GL_COLOR_BUFFER_BIT);
+        processInput(window);
         ourshader.use();
         glm::mat4 projection{1.0f};
         projection = glm::perspective(glm::radians(fov),(float)screenwidth/screenheight,frustumnear,frustumend);
@@ -80,7 +81,11 @@ int main() {
         view = glm::lookAt(cameraposition, cameraposition + camerafront, cameraup);
         glm::mat4 model{ 1.0f };
         model = glm::translate(model, glm::vec3(0.0f,0.0f,0.0f));
-        
+
+        ourshader.setmatrixuniform("model", model);
+       ourshader.setmatrixuniform("view", view);
+       ourshader.setmatrixuniform("projection", projection);
+       pistolmodel.Draw(ourshader);
 
     
 
