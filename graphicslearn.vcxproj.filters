@@ -27,6 +27,9 @@
     <ClCompile Include="stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="shader.h">
@@ -35,11 +38,23 @@
     <ClInclude Include="stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="fragmentshader.glsl" />
     <None Include="vertexshader.glsl" />
     <None Include="lightfrag.glsl" />
+    <None Include=".gitignore" />
+    <None Include="backpack.mtl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\..\..\Downloads\Shotgun.glb">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="modelloadingfrag.glsl" />
+    <None Include="modelvertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\Downloads\container.jpg">
@@ -54,5 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="lightvert.glsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="backpack.obj">
+      <Filter>Resource Files</Filter>
+    </Object>
   </ItemGroup>
 </Project>
